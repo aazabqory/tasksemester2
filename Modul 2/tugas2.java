@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class tugasmodul2 {
+public class tugas2 {
     static ArrayList<String> studentlist = new ArrayList<>();
     static ArrayList<String> bookList = new ArrayList<>();
 
@@ -144,11 +144,11 @@ class Admin {
     String[] studentList;
 
     void displayStudents() {
-        for (String data : tugasmodul2.studentlist) {
+        for (String data : tugas2.studentlist) {
             studentList = data.split("-");
             System.out.println("Nama: " + studentList[0] + "\nFakultas: " + studentList[1] + "\nNIM: " + studentList[2] + "\nProgram: " + studentList[3] + "\n");
         }
-        tugasmodul2.menuAdmin();
+        tugas2.menuAdmin();
     }
 
     void addStudent() {
@@ -167,9 +167,9 @@ class Admin {
         System.out.print("Masukkan jurusan Mahasiswa : ");
         String jurusan = input.next();
 
-        tugasmodul2.studentlist.add(nama + "-" + fakultas + "-" + nim + "-" + jurusan);
+        tugas2.studentlist.add(nama + "-" + fakultas + "-" + nim + "-" + jurusan);
 
-        tugasmodul2.menuAdmin();
+        tugas2.menuAdmin();
     }
 }
 
@@ -186,7 +186,7 @@ class Mahasiswa {
         System.out.print("Input: ");
         pil = input.nextInt();
         if (pil == 99) {
-            tugasmodul2.menu();
+            tugas2.menu();
         }
     }
 
@@ -195,14 +195,14 @@ class Mahasiswa {
         System.out.println("|| No. || Id buku \t ||Nama Buku\t|| Author\t|| Category\t|| Stock ||");
         System.out.println("===================================================================================");
 
-        for (int i = 0; i < tugasmodul2.bookList.size(); i++) {
-            String[] book = tugasmodul2.bookList.get(i).split("\\*");
+        for (int i = 0; i < tugas2.bookList.size(); i++) {
+            String[] book = tugas2.bookList.get(i).split("\\*");
             System.out.println("|| " + (i + 1) + " || " + book[0] + "\t ||" + book[1] + "\t || " + book[2] + "\t ||" + book[3] + "\t || " + book[4] + "   ||");
         }
 
         System.out.println("===================================================================================");
 
-        tugasmodul2.menuStudent();
+        tugas2.menuStudent();
     }
 
     void borrowBook() {
@@ -211,7 +211,7 @@ class Mahasiswa {
         String bookId = input.next();
 
         boolean bookFound = false;
-        for (String book : tugasmodul2.bookList) {
+        for (String book : tugas2.bookList) {
             String[] bookData = book.split("\\*");
             if (bookData[0].equals(bookId)) {
                 bookFound = true;
@@ -220,7 +220,7 @@ class Mahasiswa {
                     stock--;
                     bookData[4] = String.valueOf(stock);
                     book = String.join("*", bookData);
-                    tugasmodul2.bookList.set(tugasmodul2.bookList.indexOf(book), book);
+                    tugas2.bookList.set(tugas2.bookList.indexOf(book), book);
 
                     String[] borrowedBook = {bookId, bookData[1], bookData[2]};
                     this.borrowedBooks.add(borrowedBook);
@@ -234,6 +234,6 @@ class Mahasiswa {
         if (!bookFound) {
             System.out.println("ID Buku tidak ditemukan.");
         }
-        tugasmodul2.menuStudent();
+        tugas2.menuStudent();
     }
 }
